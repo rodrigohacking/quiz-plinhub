@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copa do Condomínio — Que técnico você seria? | Grupo Plin</title>
+  <meta name="description" content="Responda 6 perguntas e descubra seu perfil de gestão como síndico. Quiz gratuito do Grupo Plin." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #E63946;
+      --red-dark:   #c8303c;
+      --bg:         #0a0a0a;
+      --surface:    #111111;
+      --surface2:   #1a1a1a;
+      --border:     rgba(255,255,255,0.08);
+      --border-red: rgba(230,57,70,0.45);
+      --text:       #f0f0f0;
+      --muted:      #888;
+      --font-title: 'Outfit', sans-serif;
+      --font-body:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY ──────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAVBAR ───────────────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-logo {
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .navbar-logo span { color: var(--red); }
+
+    .navbar-badge {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial red glow behind hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      border: 1px solid var(--border-red);
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin-bottom: 32px;
+      background: rgba(230,57,70,0.07);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 8px var(--red);
+    }
+
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .hero-title .highlight {
+      color: var(--red);
+      text-shadow: 0 0 30px rgba(230,57,70,0.4);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #aaa;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-meta .dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 24px rgba(230,57,70,0.25);
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(230,57,70,0.35);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* ── MODAL OVERLAY ────────────────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 36px;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.94) translateY(16px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .modal-close:hover { color: #fff; background: var(--surface2); }
+
+    .modal-ball {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(230,57,70,0.12);
+      border: 1px solid var(--border-red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-family: var(--font-title);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .modal-sub {
+      font-size: 0.9rem;
+      color: #999;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* ── FORM ─────────────────────────────────────────────────────── */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .form-group input::placeholder { color: #555; }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(230,57,70,0.15);
+    }
+
+    .form-error {
+      font-size: 0.78rem;
+      color: var(--red);
+      margin-top: 5px;
+      display: none;
+    }
+    .form-error.show { display: block; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 20px rgba(230,57,70,0.2);
+    }
+    .btn-submit:hover {
+      background: var(--red-dark);
+      box-shadow: 0 0 28px rgba(230,57,70,0.3);
+    }
+
+    .form-lgpd {
+      text-align: center;
+      font-size: 0.76rem;
+      color: #555;
+      margin-top: 14px;
+    }
+    .form-lgpd span { color: #777; }
+
+    /* ── QUIZ SECTION ─────────────────────────────────────────────── */
+    #quiz-section {
+      display: none;
+      padding: 80px 0 60px;
+    }
+    #quiz-section.active { display: block; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .quiz-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .quiz-header p {
+      color: #888;
+      font-size: 1rem;
+    }
+
+    .quiz-embed-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── PROFILES SECTION ─────────────────────────────────────────── */
+    #profiles {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .profiles-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .profiles-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .profiles-header p {
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
+    }
+
+    .profile-card:hover {
+      border-color: var(--border-red);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(230,57,70,0.1);
+    }
+
+    .profile-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(230,57,70,0.1);
+      border: 1px solid var(--border-red);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--red);
+      margin: 0 auto 18px;
+    }
+
+    .profile-name {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .profile-role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .profile-desc {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.55;
+    }
+
+    /* ── CTA SECTION ──────────────────────────────────────────────── */
+    #cta-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: #fff;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .cta-box p {
+      color: #888;
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .btn-cta-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      position: relative;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(230,57,70,0.25);
+    }
+    .btn-cta-wa:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(230,57,70,0.35);
+    }
+
+    .btn-cta-wa svg { flex-shrink: 0; }
+
+    /* ── FOOTER ───────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: #444;
+    }
+    footer span { color: var(--red); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .profiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .profiles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal {
+        padding: 32px 24px;
+      }
+
+      .cta-box {
+        padding: 40px 24px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .modal { padding: 28px 18px; }
+      .hero-meta { flex-direction: column; gap: 4px; }
+      .hero-meta .dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <!-- Plin Hub logo SVG (recreated from brand asset) -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" height="38" aria-label="Grupo Plin">
+      <!-- House + P icon -->
+      <!-- House outline -->
+      <path d="M14,52 L14,31 L6,31 L30,10 L54,31 L46,31 L46,52 Z"
+        fill="none" stroke="#E8185D" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- P letter inside house -->
+      <path d="M25,44 L25,26 A8,8 0 1,1 25,26"
+        fill="none" stroke="#E8185D" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="33" cy="30" r="7" fill="none" stroke="#E8185D" stroke-width="4"/>
+
+      <!-- Divider -->
+      <line x1="66" y1="12" x2="66" y2="50" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+      <!-- "plin" wordmark — outline style -->
+      <!-- p -->
+      <circle cx="84" cy="33" r="8" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2"/>
+      <line x1="76" y1="25" x2="76" y2="50" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+      <!-- l -->
+      <line x1="100" y1="16" x2="100" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+      <!-- i body -->
+      <line x1="110" y1="27" x2="110" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+      <!-- i dot — pink -->
+      <circle cx="110" cy="19" r="3" fill="#E8185D"/>
+      <!-- n -->
+      <line x1="120" y1="27" x2="120" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M120,28 Q128,22 136,28 L136,42" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- HUB label -->
+      <!-- H -->
+      <line x1="76" y1="47" x2="76" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="82" y1="47" x2="82" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="76" y1="52" x2="82" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- U -->
+      <path d="M88,47 L88,54 Q91,59 94,54 L94,47" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- B -->
+      <line x1="100" y1="47" x2="100" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M100,47 Q106,47 106,51 Q106,52 100,52" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M100,52 Q107,52 107,55 Q107,57 100,57" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Copa do Condomínio logo badge -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 52" width="200" height="40" aria-label="Copa do Condomínio">
+        <defs>
+          <radialGradient id="bs" cx="38%" cy="32%" r="55%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+          </radialGradient>
+          <clipPath id="bc"><circle cx="26" cy="26" r="22"/></clipPath>
+        </defs>
+        <!-- Ball glow -->
+        <circle cx="26" cy="26" r="28" fill="rgba(230,57,70,0.07)"/>
+        <!-- Ball base -->
+        <circle cx="26" cy="26" r="22" fill="#111"/>
+        <!-- Patches -->
+        <g clip-path="url(#bc)">
+          <polygon points="26,16 33,21 31,29 21,29 19,21" fill="#E63946" opacity="0.95"/>
+          <polygon points="26,4 32,9 30,17 22,17 20,9" fill="#1a1a1a"/>
+          <polygon points="38,12 43,20 40,27 33,24 32,17" fill="#1a1a1a"/>
+          <polygon points="40,30 41,39 34,44 29,38 33,31" fill="#1a1a1a"/>
+          <polygon points="12,30 17,31 21,38 16,44 9,39" fill="#1a1a1a"/>
+          <polygon points="14,12 20,17 19,24 12,27 9,20" fill="#1a1a1a"/>
+        </g>
+        <circle cx="26" cy="26" r="22" fill="url(#bs)"/>
+        <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <circle cx="26" cy="26" r="23" fill="none" stroke="rgba(230,57,70,0.3)" stroke-width="0.8"/>
+        <!-- Text -->
+        <text x="58" y="22" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="14" letter-spacing="-0.3" fill="#fff">COPA DO</text>
+        <text x="58" y="39" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="14" letter-spacing="-0.3" fill="#E63946">CONDOMÍNIO</text>
+        <line x1="52" y1="8" x2="52" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      </svg>
+    </div>
+  </nav>
+
+  <!-- ── HERO ────────────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Quiz exclusivo para síndicos</div>
+
+      <h1 class="hero-title">
+        Copa do Condomínio:<br>
+        que <span class="highlight">técnico</span> você seria?
+      </h1>
+
+      <p class="hero-sub">
+        Responda 6 perguntas e descubra seu perfil de gestão.
+        Ancelotti? Guardiola? Mourinho? Klopp?
+        Cada síndico tem um estilo. Qual é o seu?
+      </p>
+
+      <div class="hero-meta">
+        <span>Quiz gratuito</span>
+        <span class="dot"></span>
+        <span>2 minutos</span>
+        <span class="dot"></span>
+        <span>Resultado imediato</span>
+      </div>
+
+      <button class="btn-primary" id="open-modal-btn">
+        Descobrir meu perfil
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── MODAL ────────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar">&#x2715;</button>
+
+      <div class="modal-ball">⚽</div>
+
+      <h2 class="modal-title" id="modal-title">Antes de entrar em campo...</h2>
+      <p class="modal-sub">
+        Preencha seus dados para receber seu resultado completo
+        e dicas personalizadas para o seu perfil de gestão.
+      </p>
+
+      <form id="lead-form" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Seu nome completo"
+            autocomplete="name"
+          />
+          <span class="form-error" id="nome-error">Por favor, informe seu nome.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input
+            type="tel"
+            id="whatsapp"
+            name="whatsapp"
+            placeholder="(00) 00000-0000"
+            autocomplete="tel"
+            maxlength="15"
+            inputmode="numeric"
+          />
+          <span class="form-error" id="whatsapp-error">Informe um WhatsApp válido.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seu@email.com"
+            autocomplete="email"
+          />
+          <span class="form-error" id="email-error">Informe um e-mail válido.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="unidades">Quantidade de unidades do condomínio</label>
+          <select id="unidades" name="unidades">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="ate50">Até 50 unidades</option>
+            <option value="51a100">51 a 100 unidades</option>
+            <option value="101a200">101 a 200 unidades</option>
+            <option value="mais200">Mais de 200 unidades</option>
+          </select>
+          <span class="form-error" id="unidades-error">Selecione a quantidade de unidades.</span>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Entrar no campo →
+        </button>
+
+        <p class="form-lgpd">
+          🔒 <span>Seus dados estão protegidos. Não enviamos spam.</span>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── QUIZ SECTION ─────────────────────────────────────────────── -->
+  <section id="quiz-section" class="fade-in">
+    <div class="container">
+      <div class="quiz-header">
+        <div class="section-label">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <circle cx="7" cy="7" r="7"/>
+          </svg>
+          Descubra seu perfil
+        </div>
+        <h2>Responda e descubra que técnico você seria</h2>
+        <p>Leva menos de 2 minutos. Resultado na hora.</p>
+      </div>
+
+      <div class="quiz-embed-wrapper">
+        <script>(function(q,u,i,z,r){z=q.createElement(u),r=q.getElementsByTagName(u)[0];z.async=1;z.src=i;r.parentNode.insertBefore(z,r);})(document,'script','https://pt.quizur.com/js/embedder.js');</script>
+        <ins class="quizurembed" data-id="quiz/copa-do-condominio-que-tecnico-voce-seria-1rp8S" data-color="#fd295b" data-font-color="#ffffff" data-bypass-cover="0" data-request-email="0"></ins>
+        <div style="text-align:center; margin-top:20px">
+          <a href="https://pt.quizur.com" target="_blank" style="color:#ccc; text-decoration: none">
+            <img src="https://pt.quizur.com/favicon-32x32.png" alt="Quizur Logo" style="width: 25px;"/>
+            Criado no Quizur
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROFILES SECTION ─────────────────────────────────────────── -->
+  <section id="profiles">
+    <div class="container">
+      <div class="profiles-header fade-in">
+        <div class="section-label">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><circle cx="7" cy="7" r="7"/></svg>
+          Os 4 perfis
+        </div>
+        <h2>Qual técnico habita em você?</h2>
+        <p>Cada perfil revela um estilo único de liderança no condomínio.</p>
+      </div>
+
+      <div class="profiles-grid">
+        <div class="profile-card fade-in">
+          <div class="profile-icon">A</div>
+          <div class="profile-name">Carlo Ancelotti</div>
+          <div class="profile-role">O síndico elegante</div>
+          <p class="profile-desc">Resolve com calma e entrega resultado sem criar drama.</p>
+        </div>
+
+        <div class="profile-card fade-in">
+          <div class="profile-icon">P</div>
+          <div class="profile-name">Pep Guardiola</div>
+          <div class="profile-role">O síndico sistemático</div>
+          <p class="profile-desc">Planeja tudo, documenta tudo, nunca é pego de surpresa.</p>
+        </div>
+
+        <div class="profile-card fade-in">
+          <div class="profile-icon">M</div>
+          <div class="profile-name">José Mourinho</div>
+          <div class="profile-role">O síndico de ferro</div>
+          <p class="profile-desc">Regra é regra. Firmeza que gera respeito e ordem.</p>
+        </div>
+
+        <div class="profile-card fade-in">
+          <div class="profile-icon">K</div>
+          <div class="profile-name">Jürgen Klopp</div>
+          <div class="profile-role">O síndico que une</div>
+          <p class="profile-desc">Transforma prédio em comunidade. Engajamento acima de tudo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA SECTION ──────────────────────────────────────────────── -->
+  <section id="cta-section">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2>Gestão de condomínio que funciona de verdade</h2>
+        <p>
+          O Grupo Plin apoia síndicos com soluções completas
+          para administração, seguros e tecnologia.
+        </p>
+        <a
+          href="https://wa.me/5541999999999"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cta-wa"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Falar com um especialista
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer>
+    <p>© 2026 Grupo <span>Plin</span>. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ── JAVASCRIPT ────────────────────────────────────────────────── -->
+  <script>
+    /* ── MODAL ──────────────────────────────────────────────────── */
+    const overlay      = document.getElementById('modal-overlay');
+    const openBtn      = document.getElementById('open-modal-btn');
+    const closeBtn     = document.getElementById('modal-close-btn');
+    const quizSection  = document.getElementById('quiz-section');
+
+    function openModal() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('nome').focus(), 100);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    /* ── WHATSAPP MASK ──────────────────────────────────────────── */
+    const whatsInput = document.getElementById('whatsapp');
+
+    whatsInput.addEventListener('input', function(e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+      let masked = '';
+      if (v.length > 0) masked = '(' + v.slice(0, 2);
+      if (v.length >= 3) masked += ') ' + v.slice(2, 7);
+      if (v.length >= 8) masked += '-' + v.slice(7, 11);
+      e.target.value = masked;
+    });
+
+    whatsInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace') {
+        const val = e.target.value;
+        if (val.endsWith(') ') || val.endsWith('-')) {
+          e.target.value = val.slice(0, -2);
+          e.preventDefault();
+        }
+      }
+    });
+
+    /* ── FORM VALIDATION & SUBMIT ───────────────────────────────── */
+    const form = document.getElementById('lead-form');
+
+    function showError(id, show) {
+      const el = document.getElementById(id);
+      el.classList.toggle('show', show);
+    }
+
+    function validateEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    function validatePhone(v) {
+      return v.replace(/\D/g, '').length === 11;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome     = document.getElementById('nome').value.trim();
+      const whats    = document.getElementById('whatsapp').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const unidades = document.getElementById('unidades').value;
+
+      let valid = true;
+
+      if (nome.length < 3) { showError('nome-error', true); valid = false; }
+      else showError('nome-error', false);
+
+      if (!validatePhone(whats)) { showError('whatsapp-error', true); valid = false; }
+      else showError('whatsapp-error', false);
+
+      if (!validateEmail(email)) { showError('email-error', true); valid = false; }
+      else showError('email-error', false);
+
+      if (!unidades) { showError('unidades-error', true); valid = false; }
+      else showError('unidades-error', false);
+
+      if (!valid) return;
+
+      const leadData = {
+        nome, whatsapp: whats, email, unidades,
+        timestamp: new Date().toISOString()
+      };
+
+      /* Save locally */
+      localStorage.setItem('plin_lead', JSON.stringify(leadData));
+
+      /* Send to Google Sheets — libera o quiz imediatamente, envia em background */
+      const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw6ZD9_XmfOcYg4rd29BlhOGO2C8wiW1mUtpxDIChJ0E_1MD2n7D0VnvsJ17SFLPhzdAA/exec';
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadData)
+      }).catch(() => {}); // falha silenciosa — lead já está no localStorage
+
+      /* Hide modal, show quiz, scroll */
+      closeModal();
+      quizSection.classList.add('active');
+      quizSection.classList.add('visible');
+
+      setTimeout(() => {
+        quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    });
+
+    /* ── INTERSECTION OBSERVER (fade-in on scroll) ───────────────── */
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach((el) => {
+      // Don't observe quiz section — it's hidden until form submit
+      if (el.id !== 'quiz-section') observer.observe(el);
+    });
+
+    // Also observe quiz section once it becomes active
+    const quizObserver = new MutationObserver(() => {
+      if (quizSection.classList.contains('active')) {
+        // Observe inner fade-ins inside quiz section if any
+        quizObserver.disconnect();
+      }
+    });
+    quizObserver.observe(quizSection, { attributes: true, attributeFilter: ['class'] });
+
+    /* Stagger profile cards */
+    const cards = document.querySelectorAll('.profile-card.fade-in');
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = `${i * 80}ms`;
+    });
+  </script>
+
+</body>
+</html>
