@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Copa do Condomínio — Que técnico você seria? | Grupo Plin</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230a0a0a'/%3E%3Ccircle cx='16' cy='16' r='13' fill='%23111'/%3E%3Cpolygon points='16,9 19.5,11.5 18.2,15.5 13.8,15.5 12.5,11.5' fill='%23E8185D'/%3E%3Cpolygon points='16,2 19,4.5 18,8 14,8 13,4.5' fill='%231a1a1a'/%3E%3Cpolygon points='23,6 25.5,10 23.5,13.5 20,12 19.5,8' fill='%231a1a1a'/%3E%3Cpolygon points='24,19 24.5,24 21,26.5 18.5,23.5 20.5,19.5' fill='%231a1a1a'/%3E%3Cpolygon points='8,19 11.5,19.5 13.5,23.5 11,26.5 7.5,24' fill='%231a1a1a'/%3E%3Cpolygon points='9,6 12.5,8 12,12 8.5,13.5 6.5,10' fill='%231a1a1a'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1'/%3E%3C/svg%3E" />
   <meta name="description" content="Responda 6 perguntas e descubra seu perfil de gestão como síndico. Quiz gratuito do Grupo Plin." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -466,16 +467,24 @@
     }
 
     .profile-icon {
-      width: 60px; height: 60px;
+      width: 88px; height: 88px;
       border-radius: 50%;
-      background: rgba(230,57,70,0.1);
-      border: 1px solid var(--border-red);
+      border: 2px solid var(--border-red);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-title);
       font-size: 1.5rem;
       font-weight: 900;
       color: var(--red);
       margin: 0 auto 18px;
+      overflow: hidden;
+      background: rgba(230,57,70,0.1);
+      box-shadow: 0 0 16px rgba(230,57,70,0.15);
+    }
+    .profile-icon img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .profile-name {
@@ -615,79 +624,96 @@
 
   <!-- ── NAVBAR ──────────────────────────────────────────────────── -->
   <nav class="navbar">
-    <!-- Plin Hub logo SVG (recreated from brand asset) -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" height="38" aria-label="Grupo Plin">
-      <!-- House + P icon -->
-      <!-- House outline -->
-      <path d="M14,52 L14,31 L6,31 L30,10 L54,31 L46,31 L46,52 Z"
-        fill="none" stroke="#E8185D" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
-      <!-- P letter inside house -->
-      <path d="M25,44 L25,26 A8,8 0 1,1 25,26"
-        fill="none" stroke="#E8185D" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="33" cy="30" r="7" fill="none" stroke="#E8185D" stroke-width="4"/>
-
-      <!-- Divider -->
-      <line x1="66" y1="12" x2="66" y2="50" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-
-      <!-- "plin" wordmark — outline style -->
-      <!-- p -->
-      <circle cx="84" cy="33" r="8" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2"/>
-      <line x1="76" y1="25" x2="76" y2="50" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-      <!-- l -->
-      <line x1="100" y1="16" x2="100" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-      <!-- i body -->
-      <line x1="110" y1="27" x2="110" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-      <!-- i dot — pink -->
-      <circle cx="110" cy="19" r="3" fill="#E8185D"/>
-      <!-- n -->
-      <line x1="120" y1="27" x2="120" y2="42" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-      <path d="M120,28 Q128,22 136,28 L136,42" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-
-      <!-- HUB label -->
-      <!-- H -->
-      <line x1="76" y1="47" x2="76" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="82" y1="47" x2="82" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="76" y1="52" x2="82" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- U -->
-      <path d="M88,47 L88,54 Q91,59 94,54 L94,47" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- B -->
-      <line x1="100" y1="47" x2="100" y2="57" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100,47 Q106,47 106,51 Q106,52 100,52" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M100,52 Q107,52 107,55 Q107,57 100,57" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-
-    <!-- Copa do Condomínio logo badge -->
-    <div style="display:flex;align-items:center;gap:12px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 52" width="200" height="40" aria-label="Copa do Condomínio">
-        <defs>
-          <radialGradient id="bs" cx="38%" cy="32%" r="55%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
-          </radialGradient>
-          <clipPath id="bc"><circle cx="26" cy="26" r="22"/></clipPath>
-        </defs>
-        <!-- Ball glow -->
-        <circle cx="26" cy="26" r="28" fill="rgba(230,57,70,0.07)"/>
-        <!-- Ball base -->
-        <circle cx="26" cy="26" r="22" fill="#111"/>
-        <!-- Patches -->
-        <g clip-path="url(#bc)">
-          <polygon points="26,16 33,21 31,29 21,29 19,21" fill="#E63946" opacity="0.95"/>
-          <polygon points="26,4 32,9 30,17 22,17 20,9" fill="#1a1a1a"/>
-          <polygon points="38,12 43,20 40,27 33,24 32,17" fill="#1a1a1a"/>
-          <polygon points="40,30 41,39 34,44 29,38 33,31" fill="#1a1a1a"/>
-          <polygon points="12,30 17,31 21,38 16,44 9,39" fill="#1a1a1a"/>
-          <polygon points="14,12 20,17 19,24 12,27 9,20" fill="#1a1a1a"/>
-        </g>
-        <circle cx="26" cy="26" r="22" fill="url(#bs)"/>
-        <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-        <circle cx="26" cy="26" r="23" fill="none" stroke="rgba(230,57,70,0.3)" stroke-width="0.8"/>
-        <!-- Text -->
-        <text x="58" y="22" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="14" letter-spacing="-0.3" fill="#fff">COPA DO</text>
-        <text x="58" y="39" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="14" letter-spacing="-0.3" fill="#E63946">CONDOMÍNIO</text>
-        <line x1="52" y1="8" x2="52" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-      </svg>
+    <div class="navbar-logo">
+      <img src="plin-logo.png" alt="Grupo Plin" style="height:36px;width:auto;" />
     </div>
+
+    <!-- Copa do Condomínio escudo -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230" height="52" aria-label="Copa do Condomínio">
+      <defs>
+        <radialGradient id="ballg" cx="40%" cy="35%" r="60%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#cccccc"/>
+        </radialGradient>
+        <clipPath id="ballc"><circle cx="100" cy="86" r="52"/></clipPath>
+        <filter id="shd"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.5"/></filter>
+      </defs>
+
+      <!-- Shield shadow -->
+      <path d="M100,222 Q10,175 10,116 L10,18 L190,18 L190,116 Q190,175 100,222Z"
+            fill="rgba(0,0,0,0.4)" transform="translate(2,4)" filter="url(#shd)"/>
+      <!-- Shield red border -->
+      <path d="M100,222 Q10,175 10,116 L10,18 L190,18 L190,116 Q190,175 100,222Z"
+            fill="#CC2233"/>
+      <!-- Shield black body -->
+      <path d="M100,213 Q22,168 22,112 L22,30 L178,30 L178,112 Q178,168 100,213Z"
+            fill="#0f0f0f"/>
+
+      <!-- Red ring behind ball -->
+      <circle cx="100" cy="86" r="61" fill="none" stroke="#CC2233" stroke-width="8"/>
+
+      <!-- Ball base -->
+      <circle cx="100" cy="86" r="52" fill="url(#ballg)"/>
+      <!-- Ball patches -->
+      <g clip-path="url(#ballc)" fill="#111111">
+        <polygon points="100,67 114,77 109,94 91,94 86,77"/>
+        <polygon points="100,38 111,46 109,62 91,62 89,46"/>
+        <polygon points="122,51 133,62 128,77 115,73 113,59"/>
+        <polygon points="130,79 136,93 128,105 116,101 115,87"/>
+        <polygon points="115,101 121,113 110,120 100,116 102,102"/>
+        <polygon points="85,101 98,102 100,116 90,120 79,113"/>
+        <polygon points="70,79 85,87 85,101 74,105 66,93"/>
+        <polygon points="78,51 87,59 85,73 72,77 67,62"/>
+      </g>
+      <circle cx="100" cy="86" r="52" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1.5"/>
+
+      <!-- Building white body -->
+      <rect x="84" y="118" width="32" height="50" fill="white" rx="1"/>
+      <!-- Roof -->
+      <polygon points="78,118 100,104 122,118" fill="white"/>
+      <!-- Windows red -->
+      <rect x="88" y="124" width="8" height="7" fill="#CC2233" rx="1"/>
+      <rect x="104" y="124" width="8" height="7" fill="#CC2233" rx="1"/>
+      <rect x="88" y="136" width="8" height="7" fill="#CC2233" rx="1"/>
+      <rect x="104" y="136" width="8" height="7" fill="#CC2233" rx="1"/>
+      <rect x="88" y="148" width="8" height="7" fill="#CC2233" rx="1"/>
+      <rect x="104" y="148" width="8" height="7" fill="#CC2233" rx="1"/>
+
+      <!-- Laurel left -->
+      <g fill="#C9A84C">
+        <path d="M58,148 Q46,130 44,108 Q42,86 52,66" fill="none" stroke="#C9A84C" stroke-width="1.8"/>
+        <ellipse cx="55" cy="144" rx="8" ry="4" transform="rotate(-65 55 144)"/>
+        <ellipse cx="48" cy="132" rx="8" ry="4" transform="rotate(-55 48 132)"/>
+        <ellipse cx="44" cy="118" rx="8" ry="4" transform="rotate(-45 44 118)"/>
+        <ellipse cx="43" cy="103" rx="8" ry="4" transform="rotate(-35 43 103)"/>
+        <ellipse cx="46" cy="88"  rx="8" ry="4" transform="rotate(-22 46 88)"/>
+        <ellipse cx="51" cy="75"  rx="8" ry="4" transform="rotate(-12 51 75)"/>
+        <ellipse cx="58" cy="64"  rx="8" ry="4" transform="rotate(-4 58 64)"/>
+      </g>
+      <!-- Laurel right -->
+      <g fill="#C9A84C">
+        <path d="M142,148 Q154,130 156,108 Q158,86 148,66" fill="none" stroke="#C9A84C" stroke-width="1.8"/>
+        <ellipse cx="145" cy="144" rx="8" ry="4" transform="rotate(65 145 144)"/>
+        <ellipse cx="152" cy="132" rx="8" ry="4" transform="rotate(55 152 132)"/>
+        <ellipse cx="156" cy="118" rx="8" ry="4" transform="rotate(45 156 118)"/>
+        <ellipse cx="157" cy="103" rx="8" ry="4" transform="rotate(35 157 103)"/>
+        <ellipse cx="154" cy="88"  rx="8" ry="4" transform="rotate(22 154 88)"/>
+        <ellipse cx="149" cy="75"  rx="8" ry="4" transform="rotate(12 149 75)"/>
+        <ellipse cx="142" cy="64"  rx="8" ry="4" transform="rotate(4 142 64)"/>
+      </g>
+
+      <!-- Ribbon banner -->
+      <path d="M22,170 L178,170 L178,215 Q178,218 175,218 L25,218 Q22,218 22,215Z" fill="#CC2233"/>
+      <path d="M12,183 L22,170 L22,215 L12,205Z" fill="#991122"/>
+      <path d="M188,183 L178,170 L178,215 L188,205Z" fill="#991122"/>
+
+      <!-- "COPA DO" -->
+      <text x="100" y="191" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="17" fill="white" text-anchor="middle" letter-spacing="1.5">COPA DO</text>
+      <!-- "CONDOMÍNIO" -->
+      <text x="100" y="210" font-family="'Outfit','Arial Black',sans-serif" font-weight="900" font-size="13" fill="white" text-anchor="middle" letter-spacing="0.8">CONDOMÍNIO</text>
+      <!-- EST. 2024 -->
+      <text x="100" y="224" font-family="'Inter',Arial,sans-serif" font-weight="600" font-size="7.5" fill="#C9A84C" text-anchor="middle" letter-spacing="1.5">EST. 2024</text>
+    </svg>
   </nav>
 
   <!-- ── HERO ────────────────────────────────────────────────────── -->
@@ -839,28 +865,28 @@
 
       <div class="profiles-grid">
         <div class="profile-card fade-in">
-          <div class="profile-icon">A</div>
+          <div class="profile-icon"><img src="ancelotti.jpg" alt="Carlo Ancelotti" onerror="this.parentElement.innerHTML='A'"/></div>
           <div class="profile-name">Carlo Ancelotti</div>
           <div class="profile-role">O síndico elegante</div>
           <p class="profile-desc">Resolve com calma e entrega resultado sem criar drama.</p>
         </div>
 
         <div class="profile-card fade-in">
-          <div class="profile-icon">P</div>
+          <div class="profile-icon"><img src="guardiola.jpg" alt="Pep Guardiola" onerror="this.parentElement.innerHTML='P'"/></div>
           <div class="profile-name">Pep Guardiola</div>
           <div class="profile-role">O síndico sistemático</div>
           <p class="profile-desc">Planeja tudo, documenta tudo, nunca é pego de surpresa.</p>
         </div>
 
         <div class="profile-card fade-in">
-          <div class="profile-icon">M</div>
+          <div class="profile-icon"><img src="mourinho.jpg" alt="José Mourinho" onerror="this.parentElement.innerHTML='M'"/></div>
           <div class="profile-name">José Mourinho</div>
           <div class="profile-role">O síndico de ferro</div>
           <p class="profile-desc">Regra é regra. Firmeza que gera respeito e ordem.</p>
         </div>
 
         <div class="profile-card fade-in">
-          <div class="profile-icon">K</div>
+          <div class="profile-icon"><img src="klopp.jpg" alt="Jürgen Klopp" onerror="this.parentElement.innerHTML='K'"/></div>
           <div class="profile-name">Jürgen Klopp</div>
           <div class="profile-role">O síndico que une</div>
           <p class="profile-desc">Transforma prédio em comunidade. Engajamento acima de tudo.</p>
@@ -879,7 +905,7 @@
           para administração, seguros e tecnologia.
         </p>
         <a
-          href="https://wa.me/5541999999999"
+          href="https://wa.me/5541997641408"
           target="_blank"
           rel="noopener noreferrer"
           class="btn-cta-wa"
